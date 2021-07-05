@@ -1,0 +1,305 @@
+@import './base/base';
+
+.content {
+  padding: 1.8rem;
+  &--bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('logoOutRot.png'), radial-gradient(farthest-corner at 40px 40px, $color-secondary-dark 60%, $color-tertiary-dark 100%);
+    background-blend-mode: multiply;
+    background-size: cover;
+  }
+  &--holder {
+    position: relative;
+    background: $color-primary-trans;
+    padding: 20px;
+    outline: 2px solid $color-primary;
+    outline-offset: 16px;
+  }
+  &--intro {
+    color: $color-secondary-light;
+    position: relative;
+    top: 24px;
+    // left: 50%;
+    max-width: 76%;
+    // transform: translateX(-50%);
+    text-align: center;
+    margin: 24px auto;
+
+    &>h1 {
+      outline: 1px solid $color-secondary-light;
+      outline-offset: -12px;
+      background: $color-tertiary-light;
+      
+    }
+
+    &__para {
+      background-color: $color-primary-light;
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-top: 20px;
+    }
+  }
+
+&--line {
+  width: calc(100% - 128px);
+  border-top: 1px solid $color-secondary-light;
+  margin: 0 64px;
+}
+  font-size: x-large;
+  line-height: 2.7;
+}
+
+$block: '.hex-grid';
+
+@mixin grid-item($amount) {
+  @for $i from 1 through $amount {
+    &:nth-of-type(#{$amount}n + #{$i}) {
+      grid-column: #{$i + $i - 1} / span 3;
+      @if $i % 2 == 0 {
+        grid-row: calc(var(--counter) + var(--counter) - 1) / span 2;
+      }
+    }
+  }
+
+  @for $i from 1 through 20 {
+    &:nth-of-type(n + #{$i * $amount + 1}) {
+      --counter: #{$i + 1};
+    }
+  }
+}
+
+.close {
+  position: fixed;
+  top: 7vh;
+  right: 12vw;
+  color: rgb(241, 180, 241);
+  cursor: pointer;
+  display: none;
+}
+.artist--pic {
+  position: relative;
+  top: 12px;
+  margin: 0 auto;
+  height: 15rem;
+  width: 80%;
+  background: url('artistsBG.png');
+  background-size: cover;
+  background-position: 50% 25%;
+}
+
+#{$block} {
+  display: flex;
+  justify-content: left;
+
+  &__list {
+    --amount: 5;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(var(--amount), 1fr 2fr) 1fr;
+    grid-gap: 2rem 4rem;
+  }
+
+  &__item {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    grid-column: 1 / span 3;
+    grid-row: calc(var(--counter) + var(--counter)) / span 2;
+    filter: drop-shadow(0 0 10px rgba(#444, 0.08));
+    height: 0;
+    padding-bottom: 90%;
+    transform-style: preserve-3d;
+  }
+
+  &__content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.69, 0.84) translateX(-23%);
+    font-size: 3.125rem;
+    line-height: 3rem;
+    color: #e3e0e0;
+
+    overflow: hidden;
+    clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 25%;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.24s ease-out;
+    background-size: contain;
+
+    & p {
+      font-weight: 400;
+      color: rgb(222, 222, 222);
+      background-color: #33333366;
+      padding:4px 6px;
+    }
+
+    // &--dialog {
+    //   height: 0px;
+    //   width: 0px;
+    //   clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+    //   background: radial-gradient(rgb(20, 32, 23), rgb(47, 102, 60));
+    //   position: fixed;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    //   transition: height 0.78s 0.2s ease-out, width 0.78s 0.2s ease-out;
+    //   z-index: 1018;
+    //   &__content {
+    //     position: fixed;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -30%);
+    //     color: rgb(199, 199, 202);
+    //     justify-content: center;
+    //     text-align: center;
+    //     font-size: 1rem;
+    //     line-height: 2rem;
+    //   }
+      
+    // }
+  }
+
+  &__content:hover {
+    transform: scale(0.71, 0.87) translateX(-22%);
+    transition: all 0.32s 0.2s ease-out;
+  }
+}
+
+.dialog--bg {
+  height: 0;
+  width: 0;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  z-index: 1017;
+  background-color: rgba(0, 0, 0, 0.644);
+  transition: all 0.28s 0.2s ease-out;
+}
+
+.artist--bio {
+  height: 0px;
+  width: 80vw;
+  background: radial-gradient(farthest-corner at 40px 40px, rgb(8, 8, 8) 60%, $color-primary-dark 100%);
+  position: fixed;
+  top: 5vh;
+  left: 10vw;
+  transition: height 0.78s 0.2s ease-out, width 0.78s 0.2s ease-out;
+  z-index: 1018;
+  overflow: hidden;
+  &__details {
+    position: relative;
+    width: 76%;
+    top: 26px;
+    margin: 0 auto;
+    color: rgb(199, 199, 202);
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #{$block} {
+    &__list {
+      --amount: 5;
+      --counter: 1;
+    }
+
+    &__item {
+      @include grid-item(5);
+    }
+  }
+}
+
+@media screen and (min-width: 1120px) and (max-width: 1439px) {
+  #{$block} {
+    &__list {
+      --amount: 4;
+      --counter: 1;
+    }
+
+    &__item {
+      @include grid-item(4);
+    }
+  }
+}
+
+@media screen and (min-width: 840px) and (max-width: 1119px) {
+  #{$block} {
+    &__list {
+      --amount: 3;
+      --counter: 1;
+      grid-gap: 1.5rem 3rem;
+    }
+
+    &__item {
+      @include grid-item(3);
+    }
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 839px) {
+  #{$block} {
+    &__list {
+      --amount: 2;
+      --counter: 1;
+      grid-gap: 1.5rem 3rem;
+    }
+
+    &__item {
+      @include grid-item(2);
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #{$block} {
+    &__list {
+      --amount: 1;
+      grid-gap: 1.5rem 3rem;
+    }
+  }
+  .close {
+    right: 5vw;
+  }
+  .content {
+    padding: .4rem;
+    
+    
+    &--intro {
+      max-width: unset;
+      &>h1 {
+        padding: 18px;
+        line-height: 2.2rem ;
+        font-size: larger;
+      }
+      &__para {
+        line-height: 2.2rem;
+        font-size: large;
+      }
+    }
+  }
+
+  .artist--bio {
+    width: 96vw;
+    left: 2vw;
+    &__details { 
+      width: 92%;
+      top: 26px;
+    }
+  }
+}

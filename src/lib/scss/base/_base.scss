@@ -1,0 +1,27 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../abstracts/functions';
+@import './animations';
+@import './typography';
+@import './utilities';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@120;400&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 120;
+}
+
+html {
+  font-size: 62.5%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}

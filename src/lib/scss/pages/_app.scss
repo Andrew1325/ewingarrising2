@@ -1,0 +1,57 @@
+@import '../base/base';
+@import '../layouts/header';
+@import '../layouts/footer';
+@import '../layouts/navigation';
+@import '../components/story';
+@import '../components/form';
+
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  margin-top: -20vh;
+}
+
+.section-features {
+  padding: 25rem 0;
+  background-image: 
+    linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)),
+    url('../img/nat-4.jpg');
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+  position: relative;
+  margin-top: -15%;
+}
+
+.section-tours {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  margin-top: -15rem;
+}
+
+.section-stories {
+  position: relative;
+  padding: 15rem 0;
+}
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+}
+
+.book {
+  background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 50%, transparent 50%), url('/img/nat-10.jpg');
+  background-size: 100%;
+  border-radius: $border-radius;
+  box-shadow: 0 1rem 3rem rgba($color-black, .5);
+  height: 50rem;
+}
+
+.book__form {
+  width: 50%;
+  padding: 3rem;
+}
